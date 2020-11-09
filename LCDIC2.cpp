@@ -1,11 +1,8 @@
 #include "LCDIC2.h"
 
-LCDIC2::LCDIC2(uint8_t address, uint8_t width, uint8_t height, bool font): _address(address), _width(width), _height(height), _font(font) {}
+LCDIC2::LCDIC2(uint8_t address, uint8_t width, uint8_t height, bool font): _font(font), _address(address), _height(height), _width(width) {}
 
 bool LCDIC2::begin() {
-  wait(20000);
-  Wire.begin();
-
   return (_height && _width)
          && send(0b110000) && wait(4100)
          && send(0b110000) && wait(100)
